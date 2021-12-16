@@ -10,4 +10,6 @@ Sample steps to use:
 
 5) Run rails db:seed to populate tables
 
-6) Run the rails server, preview in the browser and enjoy!
+6) Run yarn add bootstrap@4.3.1 jquery popper.js command to style the project
+
+7) Run the rails server, preview in the browser and enjoy!
