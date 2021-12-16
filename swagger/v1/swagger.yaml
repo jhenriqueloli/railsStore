@@ -1,0 +1,179 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/":
+    get:
+      summary: Get a list of products
+      tags:
+      - Products
+      responses:
+        '200':
+          description: Products found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+        '422':
+          description: invalid request
+  "/users":
+    get:
+      summary: Get a list of users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Users found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                required:
+                - id
+                - username
+                - email
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                required:
+                - id
+                - username
+                - email
+        '422':
+          description: invalid request
+  "/signup":
+    post:
+      summary: Register into store
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: password
+              required:
+              - username
+              - email
+              - password
+  "/vapes":
+    get:
+      summary: Get a list of vapes
+      tags:
+      - Vapes
+      responses:
+        '200':
+          description: Vapes found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+        '422':
+          description: invalid request
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/
