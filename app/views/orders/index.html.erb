@@ -1,0 +1,44 @@
+<section class="py-5">
+  <div class="container">
+    <% if @orders.empty? %>
+      <div class="card">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+          <h4 class="card-title mt-3 mb-3 text-center">You dont have any register to show, yet.</h4>
+        </article>
+      </div>
+      <%= link_to 'Back', root_path, class: "btn btn-outline-dark mt-3 mb-3" %>
+    <% else %>
+      <div class="card apple_pagination">
+        <div class="row px-3">
+          <h4 class="card-title mt-3 mb-3 text-center col-10">Orders History</h4>
+        </div>
+        <table class="table col-10">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Products</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= time_ago_in_words(order.created_at) %> ago</td>
+                <td><%= order.status %></td>
+                <td><%= number_to_currency(order.amount) %></td>
+                <td>
+                  <% order.order_items.each do |item| %>
+                    <%= item.vape.name + "," if item.vape %><%= item.essence.name + "," if item.essence %><%= item.accessory.name + "," if item.accessory %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @orders %>
+      </div> 
+    <% end %>
+  </div>
+</section>

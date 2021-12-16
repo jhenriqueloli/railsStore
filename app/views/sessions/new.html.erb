@@ -1,0 +1,22 @@
+<section class="py-5">
+    <div class="container">
+
+      <div class="card">
+        <article class="card-body mx-auto">
+          <h4 class="card-title mt-3 mb-3 text-center">LOG IN AREA</h4>
+          <%= form_with scope: :session, url: login_path, local: true do |f| %>
+            <div class="form-group input-group mb-3">
+              <%= f.email_field :email, class: "form-control", placeholder: "Email address" %>
+            </div>              
+            <div class="form-group input-group mb-3">
+              <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>                          
+            <div class="form-group text-center mb-3">
+                <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+            </div> <!-- form-group// -->                                                               
+          <% end %>
+        </article>
+      </div> <!-- card.// -->
+      <%= link_to 'Back', root_path, class: "btn btn-outline-dark mt-3 mb-3" %>
+  </div>
+</section>

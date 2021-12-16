@@ -1,0 +1,118 @@
+<section class="py-5">
+  <div class="container">
+    <div class="card apple_pagination">
+      <div class="row px-3">
+        <%= link_to 'New Vape', new_vape_path, class: "btn btn-dark mt-3 mb-3 mx-auto col-2" %>
+        <h4 class="card-title mt-3 mb-3 text-center col-10">VAPERS LIST</h4>
+      </div>
+      <table class="table col-10">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Price</th>
+            <th scope="col">Available</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @vapers.each do |vape| %>
+            <tr>
+              <td><%= vape.name %></td>
+              <td><%= vape.brand %></td>
+              <td><%= number_to_currency(vape.price) %></td>
+              <td><%= vape.quantity %></td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <%= link_to 'Details', vape, class:"btn btn-secondary" %>
+                  <%= link_to 'Edit', edit_vape_path(vape), class:"btn btn-secondary" %>
+                  <%= button_to "Destroy", vape_path(vape), method: :delete,  class: "btn btn-secondary", data: { confirm: 'Are you sure?' }  %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @vapers %>
+    </div> 
+  </div>
+
+  <div class="container">
+    <div class="card apple_pagination">
+      <div class="row px-3">
+        <%= link_to 'New Essence', new_essence_path, class: "btn btn-dark mt-3 mb-3 mx-auto col-2" %>
+        <h4 class="card-title mt-3 mb-3 text-center col-10">ESSENCE LIST</h4>
+      </div>
+      <table class="table col-10">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Price</th>
+            <th scope="col">Available</th>
+            <th scope="col" colspan="3">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @essences.each do |essence| %>
+            <tr>
+              <td><%= essence.name %></td>
+              <td><%= essence.brand %></td>
+              <td><%= number_to_currency(essence.price) %></td>
+              <td><%= essence.quantity %></td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <%= link_to 'Details', essence, class:"btn btn-secondary" %>
+                  <%= link_to 'Edit', edit_essence_path(essence), class:"btn btn-secondary" %>
+                  <%= button_to "Destroy", essence_path(essence), method: :delete,  class: "btn btn-secondary", data: { confirm: 'Are you sure?' }  %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @essences %>
+    </div> 
+  </div>
+
+  <div class="container">
+    <div class="card apple_pagination">
+      <div class="row px-3">
+        <%= link_to 'New Accessory', new_accessory_path, class: "btn btn-dark mt-3 mb-3 mx-auto col-2" %>
+        <h4 class="card-title mt-3 mb-3 text-center col-10">ACCESSORIES LIST</h4>
+      </div>
+      <table class="table col-10">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Price</th>
+            <th scope="col">Available</th>
+            <th scope="col" colspan="4">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @accessories.each do |accessory| %>
+            <tr>
+              <td><%= accessory.name %></td>
+              <td><%= accessory.brand %></td>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= accessory.quantity %></td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <%= link_to 'Details', accessory, class:"btn btn-secondary" %>
+                  <%= link_to 'Edit', edit_accessory_path(accessory), class:"btn btn-secondary" %>
+                  <%= button_to "Destroy", accessory_path(accessory), method: :delete,  class: "btn btn-secondary", data: { confirm: 'Are you sure?' }  %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @accessories %>
+    </div> 
+  </div>
+</section>

@@ -1,0 +1,59 @@
+<section class="py-5">
+  <div class="container">
+    <% if @order_items.empty? %>
+      <div class="card">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+          <h4 class="card-title mt-3 mb-3 text-center">Your cart is empty</h4>
+        </article>
+      </div>
+      <%= link_to 'Back', root_path, class: "btn btn-outline-dark mt-3 mb-3" %>
+    <% else %>
+      <div class="card apple_pagination">
+        <div class="row px-3">
+          <h4 class="card-title mt-3 mb-3 text-center col-8">MY CART</h4>
+          <h4 class="card-title mt-3 mb-3 text-center col-4">Total : <%= number_to_currency(@order.amount) %></h4>
+        </div>
+        <table class="table col-10">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Price</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @order_items.each do |item| %>
+              <tr>
+                <% if item.vape %>
+                  <td><%= item.vape.name %></td>
+                  <td><%= item.vape.brand %></td>
+                  <td><%= number_to_currency(item.vape.price) %></td>  
+                <% end %>
+                <% if item.essence %>
+                  <td><%= item.essence.name %></td>
+                  <td><%= item.essence.brand %></td>
+                  <td><%= number_to_currency(item.essence.price) %></td>  
+                <% end %>
+                <% if item.accessory %>
+                  <td><%= item.accessory.name %></td>
+                  <td><%= item.accessory.brand %></td>
+                  <td><%= number_to_currency(item.accessory.price) %></td>  
+                <% end %>
+                <td>
+                  <%= button_to "Remove from Cart", order_item_path(item), method: :delete,  class: "btn btn-danger", data: { confirm: 'Are you sure?' }  %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @order_items %>
+      </div>
+      <%= form_with(model: @order, local: true) do |f| %>
+        <%= f.hidden_field :status, value: "Processing" %>
+        <%= f.submit "Buy Now",class: "btn btn-primary block mt-2", id: "buy_now" %>  
+      <% end %>
+    <% end %>  
+  </div>
+</section>

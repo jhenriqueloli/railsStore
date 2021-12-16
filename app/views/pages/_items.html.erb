@@ -1,0 +1,25 @@
+<% @products.each do |product| %>
+  <div class="col mb-5">
+    <div class="card h-100">
+      <img class="card-img-top" src="https://picsum.photos/450/300?random=2">
+      <div class="card-body p-4">
+        <div class="text-center">
+          <h5 class="fw-bolder"><%= product.name %></h5>
+          <p class="fw-bolder"><%= product.brand %></p>
+          <%= number_to_currency(product.price) %>
+        </div>
+      </div>
+      <!-- Product actions-->
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+        <%= form_with scope: :order_item, url: order_items_path do |f| %>
+          <%= f.hidden_field :code, value: product.code %>
+          <%= f.hidden_field :price, value: product.price %>
+          <%= f.hidden_field :quantity, value: "1" %>
+          <%= f.submit "ADD TO CART", class: "btn btn-outline-dark mt-auto" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
