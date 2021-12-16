@@ -1,24 +1,13 @@
-# README
+Sample steps to use:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) Clone the app and cd into the app directory
 
-Things you may want to cover:
+2) Re-set remote to your own repo
 
-* Ruby version
+3) Bundle install to install all the gems necessary
 
-* System dependencies
+4) Run rails db:migrate to create the tables
 
-* Configuration
+5) Run rails db:seed to populate tables
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+6) Run the rails server, preview in the browser and enjoy!
