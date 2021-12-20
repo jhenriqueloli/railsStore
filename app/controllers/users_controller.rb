@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new]
+  before_action :require_admin, only: %i[ index ]
+
 
   # GET /users or /users.json
   def index
@@ -33,5 +35,6 @@ class UsersController < ApplicationController
   def show
   end
 
+    
     
 end

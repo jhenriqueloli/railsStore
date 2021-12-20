@@ -12,11 +12,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :remember_me])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation])
+  def require_admin
+    if !current_user.admin?
+      redirect_to root_path  
+    end
+  end
 
-  end 
+  protected
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :remember_me])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation])
+    end 
 end

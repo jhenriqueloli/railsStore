@@ -25,7 +25,8 @@
                   <% else %>                  
                     <%= link_to 'Make Admin', admin_path(user), class:"btn btn-secondary", method: :post, data: { confirm: 'Are you sure?' }  %>
                   <% end %>
-                  <%= link_to 'Edit', edit_user_registration_url(user), class:"btn btn-secondary" %>
+                  
+                  <%= link_to 'Edit', edit_user_registration_url(user), class:"btn btn-secondary" if user.id == current_user.id %>
                 </div>
               </td>
             </tr>
