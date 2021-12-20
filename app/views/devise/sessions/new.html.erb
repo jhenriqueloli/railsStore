@@ -1,0 +1,31 @@
+<section class="py-5">
+    <div class="container">
+
+      <div class="card">
+        <article class="card-body mx-auto">
+          <h4 class="card-title mt-3 mb-3 text-center">LOG IN AREA</h4>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group input-group mb-3">
+              <%= f.email_field :email, class: "form-control", placeholder: "Email address" %>
+            </div>              
+            <div class="form-group input-group mb-3">
+              <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>    
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group input-group mb-3 field">
+                <%= f.check_box :remember_me, class: "remember-me"  %> <%= f.label :remember_me%>
+              </div>
+            <% end %>                      
+            <div class="form-group text-center mb-3">
+              <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+            </div> 
+            <div class="form-group text-center mb-3">
+              <%= render "devise/shared/links" %>                                                               
+            </div> 
+          <% end %>
+        </article>
+      </div> <!-- card.// -->
+      <%= link_to 'Back', root_path, class: "btn btn-outline-dark mt-3 mb-3" %>
+  </div>
+</section>

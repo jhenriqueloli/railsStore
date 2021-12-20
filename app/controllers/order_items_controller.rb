@@ -41,7 +41,7 @@ class OrderItemsController < ApplicationController
   end
 
   def set_order
-    redirect_to signup_path and return if !logged_in?
+    redirect_to signup_path and return if !user_signed_in?
     if Order.where("user_id = ? and status = ?" , current_user.id, "Open").first.nil?
       @order = Order.new(:user_id => current_user.id, :status => "Open", :amount => "0")
       @order.save

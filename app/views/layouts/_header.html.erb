@@ -4,7 +4,7 @@
       <%= image_tag "bairesdev.png", class: "navbar-brand" %>
     <% end %>
     <div class="navbar " id="navbarSupportedContent">
-      <% if current_page?(:controller => 'pages', :action => 'home') %>
+      <%# <% if current_page?(:controller => 'pages', :action => 'home') %> %>
         <%= form_for("search", url: root_path, method: :get ) do |f| %>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -17,9 +17,9 @@
             <%= f.text_field :search, class: "form-control", placeholder: "Search" %>
           </div>
         <% end %>
-      <% end %>
+      <%# <% end %> %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,17 +39,17 @@
               Welcome <%= current_user.username %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to 'Edit Profile', edit_user_registration_url(current_user), class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to 'Orders', orders_url, class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
-              <%= link_to 'Logout', logout_path, class: "dropdown-item", method: :delete %>
+              <%= link_to 'Logout', destroy_user_session_path, class: "dropdown-item", method: :delete %>
             </div>
           </li>
           <li class="nav-item"><%= link_to "Cart", cart_url, class: "nav-link" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Login", login_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_url, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log In", new_user_session_url, class: "nav-link" %></li>
         <% end %> 
       </ul>
     </div>

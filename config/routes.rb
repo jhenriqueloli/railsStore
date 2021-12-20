@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   resources :users, expect: [:new]  
@@ -11,10 +12,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
   post 'admin', to: 'users#admin'
-  get 'signup', to: 'users#new' 
-  get 'login', to: 'sessions#new' 
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
   get 'products', to: 'admin#index'
   get 'cart', to: 'cart#show'
 

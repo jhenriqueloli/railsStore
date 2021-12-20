@@ -1,17 +1,9 @@
 class ApplicationController < ActionController::Base
-  include ApplicationHelper
-  helper_method :current_user, :logged_in?, :current_order
-
-  def current_user
-    @curent_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
-  def logged_in?
-    !!current_user
-  end
+  before_action :authenticate_user! 
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def current_order 
-    if logged_in?    
+    if user_signed_in?    
       if Order.where("user_id = ? and status = ?" , current_user.id, "Open").first.nil?
         @current_order = Order.create(user_id: current_user.id, status: "Open", amount: 0)
       else
@@ -20,4 +12,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :remember_me])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation])
+
+  end 
 end
