@@ -94,6 +94,10 @@ body {
   color: rgb(0, 0, 0) !important
 }
 
+.apple_pagination .btn-dark{
+  color: #f7f7f7 !important
+}
+
 .card-title {
   text-shadow: 2px 2px 5px #000;
 }
@@ -126,9 +130,29 @@ button.close {
   min-width: 93px;
 }
 
+.btn-group .btn{
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  padding: 0px 20px;
+}
+
+
 .btn-primary {
   background-color: #0272b1;
   border: #0272b1;
+}
+
+
+.btn-group .btn-secondary{
+  color: #fff !important;
+  border: #a7a7a7;
+}
+
+.btn-group .btn-secondary:hover{
+  background-color: #a7a7a7 !important;
+  color: #fff;
+  border: #fff;
 }
 
 .btn-outline-primary {
@@ -143,12 +167,7 @@ button.close {
   background-color: #ffffffb8;
 }
 
-.btn-group .btn{
-    color: #fff;
-    background-color: #212529;
-    border-color: #212529;
-    padding: 0px 20px;
-}
+
 
 #buy_now{
   display: block;
