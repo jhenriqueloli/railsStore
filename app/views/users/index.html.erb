@@ -2,7 +2,6 @@
   <div class="container">
     <div class="card apple_pagination">
       <div class="row px-3">
-        <%= link_to 'New User', new_user_path, class: "btn btn-dark mt-3 mb-3 mx-auto col-2" %>
         <h4 class="card-title mt-3 mb-3 text-center col-10">USERS LIST</h4>
       </div>
       <table class="table col-10">
@@ -26,9 +25,7 @@
                   <% else %>                  
                     <%= link_to 'Make Admin', admin_path(user), class:"btn btn-secondary", method: :post, data: { confirm: 'Are you sure?' }  %>
                   <% end %>
-                  <%= link_to 'Details', user, class:"btn btn-secondary" %>
-                  <%= link_to 'Edit', edit_user_path(user), class:"btn btn-secondary" %>
-                  <%= link_to 'Destroy', user, class:"btn btn-secondary" ,method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit', edit_user_registration_url(user), class:"btn btn-secondary" %>
                 </div>
               </td>
             </tr>
