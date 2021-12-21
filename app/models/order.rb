@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   before_save :set_subtotal
 
   validates :status , presence:  true
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   belongs_to :user
 
   def subtotal

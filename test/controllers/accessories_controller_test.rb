@@ -1,7 +1,13 @@
 require "test_helper"
 
 class AccessoriesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
+    get '/users/sign_in'
+    sign_in users(:user_001)
+    post user_session_url
+   
     @accessory = Accessory.create(name: "Accessory Test", brand: "Brand Test", price: "10", quantity: "20")
   end
 
@@ -11,8 +17,8 @@ class AccessoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create accessory" do
-    assert_difference('Accessory.count') do
-      post accessories_url, params: { accessory: { name: "Accessory Test", brand: "Brand Test", price: "10", quantity: "20" } }
+    assert_difference 'Accessory.count' do 
+      post accessories_url, params: { accessory: { name: "Accessory Test New", brand: "Brand Test New", price: "11", quantity: "21" } }
     end
 
     assert_redirected_to products_path
@@ -32,7 +38,6 @@ class AccessoriesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Accessory.count', -1) do
       delete accessory_url(@accessory)
     end
-
-    assert_redirected_to accessories_url
+    assert_redirected_to products_path
   end
 end

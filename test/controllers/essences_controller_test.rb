@@ -1,7 +1,14 @@
 require "test_helper"
 
 class EssencesControllerTest < ActionDispatch::IntegrationTest
+  
+  include Devise::Test::IntegrationHelpers
+  
   setup do
+    get '/users/sign_in'
+    sign_in users(:user_001)
+    post user_session_url
+    
     @essence = Essence.create(name: "Vape Test", brand: "Brand Test", flavor: "blue berries", size: "20", strength: "soft", price: "10", quantity: "20")
   end
 
@@ -11,8 +18,8 @@ class EssencesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create essence" do
-    assert_difference('Essence.count') do
-      post essences_url, params: { essence: { name: "Vape Test", brand: "Brand Test", flavor: "blue berries", size: "20", strength: "soft", price: "10", quantity: "20" } }
+    assert_difference 'Essence.count' do 
+      post essences_url, params: { essence: { name: "Vape Test New", brand: "Brand Test New", flavor: "red berries", size: "21", strength: "medium", price: "15", quantity: "25" } }
     end
 
     assert_redirected_to products_path
@@ -32,7 +39,6 @@ class EssencesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Essence.count', -1) do
       delete essence_url(@essence)
     end
-
-    assert_redirected_to essences_url
+    assert_redirected_to products_path
   end
 end

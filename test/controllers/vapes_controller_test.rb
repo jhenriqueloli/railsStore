@@ -1,7 +1,13 @@
 require "test_helper"
 
 class VapesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
+    get '/users/sign_in'
+    sign_in users(:user_001)
+    post user_session_url
+   
     @vape = Vape.create(name: "Vape Test", brand: "Brand Test", warrancy: "2", price: "10", quantity: "20")
   end
 
@@ -11,8 +17,8 @@ class VapesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create vape" do
-    assert_difference('Vape.count') do
-      post vapes_url, params: { vape: { name: "Vape Test", brand: "Brand Test", warrancy: "2", price: "10", quantity: "20" } }
+    assert_difference 'Vape.count' do 
+      post vapes_url, params: { vape: { name: "Vape Test New", brand: "Brand Test New", warrancy: "3", price: "13", quantity: "23" } }
     end
 
     assert_redirected_to products_path
@@ -32,7 +38,6 @@ class VapesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Vape.count', -1) do
       delete vape_url(@vape)
     end
-
-    assert_redirected_to vapes_url
+    assert_redirected_to products_path
   end
 end

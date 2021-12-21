@@ -10,18 +10,18 @@ class UserTest < ActiveSupport::TestCase
       assert @user.valid?
     end
   
-    test "name should be present" do
-      @user.name = " "
+    test "username should be present" do
+      @user.username = " "
       assert_not @user.valid?
     end
 
-    test "name should not be too long" do
-      @user.name = "a" * 31
+    test "username should not be too long" do
+      @user.username = "a" * 31
       assert_not @user.valid?
     end
   
-    test "name should not be too short" do
-      @user.name = "aa"
+    test "username should not be too short" do
+      @user.username = "aa"
       assert_not @user.valid?
     end
 
@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
 
     test "email should be unique" do
       @user.save
-      @user2 = Vape.new(username: "Senhor Barriga", email: "madruga@gmail.com", password: "321654")
+      @user2 = User.new(username: "Senhor Barriga", email: "madruga@gmail.com", password: "321654")
       assert_not @user2.valid?
     end
 

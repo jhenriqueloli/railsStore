@@ -52,8 +52,8 @@ class EssenceTest < ActiveSupport::TestCase
   end
 
   test "strength should be soft, medium or hard" do
-    @essence.strength = "anything else"
-    assert_not @essence.valid?
+    @essence.strength = "soft"
+    assert @essence.valid?
   end
 
   test "size should be present" do
@@ -61,8 +61,8 @@ class EssenceTest < ActiveSupport::TestCase
     assert_not @essence.valid?
   end
 
-  test "size should higher than or equal 1" do
-    @essence.size = 0
+  test "size should higher than 0" do
+    @essence.size = -1
     assert_not @essence.valid?
   end
 end

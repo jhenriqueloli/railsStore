@@ -1,8 +1,8 @@
 class Accessory < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3, maximum: 25 }
   validates :brand, presence: true
-  validates :price, presence: true
-  validates :quantity, presence: true, numericality: { only_integer: true }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
    
   validates_uniqueness_of :name
 

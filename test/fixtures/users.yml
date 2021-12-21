@@ -1,0 +1,6 @@
+user_001:
+  id: 1
+  username: testeName
+  admin: true
+  email: teste@sample.com
+  encrypted_password: 123456
