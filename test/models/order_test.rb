@@ -22,7 +22,7 @@ class OrderTest < ActiveSupport::TestCase
   
     test "could not create another order while exist one with status 'open' for the same user" do
       @order.save
-      @order2 = Order.new(user_id: "1", status: "open", amount: "888.88")
+      @order2 = Order.create(user_id: "1", status: "open", amount: "888.88")
       assert_not @order2.valid?
     end
   

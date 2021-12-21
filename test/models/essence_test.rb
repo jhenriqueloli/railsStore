@@ -26,22 +26,12 @@ class EssenceTest < ActiveSupport::TestCase
     assert_not @essence.valid?
   end
 
-  test "price should be present" do
-    @essence.price = " "
-    assert_not @essence.valid?
-  end
-
-  test "price should higher than or equal 0" do
+  test "price should be higher than or equal 0" do
     @essence.price = -1
     assert_not @essence.valid?
   end
 
-  test "quantity should be present" do
-    @essence.quantity = " "
-    assert_not @essence.valid?
-  end
-
-  test "quantity should higher than or equal 1" do
+  test "quantity should be higher than or equal 1" do
     @essence.quantity = 0
     assert_not @essence.valid?
   end
@@ -54,11 +44,6 @@ class EssenceTest < ActiveSupport::TestCase
   test "strength should be soft, medium or hard" do
     @essence.strength = "soft"
     assert @essence.valid?
-  end
-
-  test "size should be present" do
-    @essence.size = " "
-    assert_not @essence.valid?
   end
 
   test "size should higher than 0" do
