@@ -4,6 +4,386 @@ info:
   title: API V1
   version: v1
 paths:
+  "/consumer/accessories":
+    get:
+      summary: Get a list of accessories
+      tags:
+      - Accessory
+      responses:
+        '200':
+          description: Accessories found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '422':
+          description: invalid request
+    post:
+      summary: Create a new Accessory
+      tags:
+      - Accessory
+      parameters: []
+      responses:
+        '201':
+          description: accessory updated successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                brand:
+                  type: string
+                price:
+                  type: float
+                quantity:
+                  type: integer
+              required:
+              - id
+              - name
+              - brand
+              - price
+              - quantity
+  "/consumer/accessories/{id}":
+    get:
+      summary: Retrieves a accessory
+      tags:
+      - Accessory
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: accessory found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '404':
+          description: Accessory not found
+    patch:
+      summary: Update a Accessory
+      tags:
+      - Accessory
+      parameters: []
+      responses:
+        '201':
+          description: accessory updated successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                brand:
+                  type: string
+                price:
+                  type: float
+                quantity:
+                  type: integer
+              required:
+              - id
+              - name
+              - brand
+              - price
+              - quantity
+  "/consumer/essences":
+    get:
+      summary: Get a list of essences
+      tags:
+      - Essence
+      responses:
+        '200':
+          description: Essences found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '422':
+          description: invalid request
+    post:
+      summary: Create a new Essence
+      tags:
+      - Essence
+      parameters: []
+      responses:
+        '201':
+          description: essence created successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                brand:
+                  type: string
+                flavor:
+                  type: string
+                size:
+                  type: float
+                strength:
+                  type: string
+                price:
+                  type: float
+                quantity:
+                  type: integer
+              required:
+              - id
+              - name
+              - brand
+              - price
+              - quantity
+  "/consumer/essences/{id}":
+    get:
+      summary: Retrieves a essence
+      tags:
+      - Essence
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: essence found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '404':
+          description: Essence not found
+    patch:
+      summary: Update a Essence
+      tags:
+      - Essence
+      parameters: []
+      responses:
+        '201':
+          description: essence updated successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                brand:
+                  type: string
+                flavor:
+                  type: string
+                size:
+                  type: float
+                strength:
+                  type: string
+                price:
+                  type: float
+                quantity:
+                  type: integer
+              required:
+              - id
+              - name
+              - brand
+              - price
+              - quantity
   "/":
     get:
       summary: Get a list of products
@@ -55,7 +435,7 @@ paths:
                 - quantity
         '422':
           description: invalid request
-  "/users":
+  "/consumer/users":
     get:
       summary: Get a list of users
       tags:
@@ -94,9 +474,9 @@ paths:
                 - email
         '422':
           description: invalid request
-  "/signup":
+  "/sign_up":
     post:
-      summary: Register into store
+      summary: Register into application
       tags:
       - Users
       parameters: []
@@ -116,16 +496,64 @@ paths:
                 email:
                   type: string
                 password:
-                  type: password
+                  type: string
               required:
               - username
               - email
               - password
-  "/vapes":
+  "/edit":
+    patch:
+      summary: Update User informations
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user updated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+              required:
+              - username
+              - email
+  "/sign_in":
+    post:
+      summary: Log in into application
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user logged in
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/consumer/vapes":
     get:
       summary: Get a list of vapes
       tags:
-      - Vapes
+      - Vape
       responses:
         '200':
           description: Vapes found
@@ -172,6 +600,130 @@ paths:
                 - quantity
         '422':
           description: invalid request
+    post:
+      summary: Create a new Vape
+      tags:
+      - Vape
+      parameters: []
+      responses:
+        '201':
+          description: vape updated successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                brand:
+                  type: string
+                warrancy:
+                  type: string
+                price:
+                  type: string
+                quantity:
+                  type: string
+              required:
+              - name
+              - brand
+              - warrancy
+              - price
+              - quantity
+  "/consumer/vapes/{id}":
+    get:
+      summary: Retrieves a vape
+      tags:
+      - Vape
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: vape found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+        '404':
+          description: Vape not found
+    patch:
+      summary: Update a Vape
+      tags:
+      - Vape
+      parameters: []
+      responses:
+        '201':
+          description: vape updated successfully
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                brand:
+                  type: string
+                warrancy:
+                  type: integer
+                price:
+                  type: float
+                quantity:
+                  type: integer
+              required:
+              - id
+              - name
+              - brand
+              - warrancy
+              - price
+              - quantity
 servers:
 - url: http://{defaultHost}
   variables:

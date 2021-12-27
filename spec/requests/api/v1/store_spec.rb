@@ -4,7 +4,6 @@ RSpec.describe 'api/v1/store', type: :request do
 
 
   path '/' do
-
     get 'Get a list of products' do
       tags 'Products'
       produces 'application/json', 'application/xml'
@@ -19,16 +18,17 @@ RSpec.describe 'api/v1/store', type: :request do
             quantity: { type: :integer }
           },
           required: [ 'id', 'name', 'warrrancy', 'price', 'quantity' ]
-
-        let(:id) { Vape.create(name: 'Vape Swagger', warrrancy: '36', price: '29.90', quantity: '20').id }
-        run_test!
+       run_test!
       end
 
       response '422', 'invalid request' do
-        let(:vape) { { title: 'foo' } }
+        let(:id) { 'invalid' }
         run_test!
       end
     end
   end
+
+
+  
 
 end

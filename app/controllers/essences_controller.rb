@@ -2,6 +2,16 @@ class EssencesController < ApplicationController
   before_action :set_essence, only: %i[ show edit update destroy ]
   before_action :require_admin, expect: %i[show]
 
+  # GET /essences/1 or /essences/1.json
+  def index
+    @essences = Essence.all
+    
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :essences => @essences } }
+    end
+  end
+
   # GET /essence/1 or /essence/1.json
   def show
     @essence = Essence.find(params[:id])

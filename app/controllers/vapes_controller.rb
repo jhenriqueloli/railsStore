@@ -3,6 +3,16 @@ class VapesController < ApplicationController
   before_action :require_admin, expect: %i[show]
 
   # GET /vapes/1 or /vapes/1.json
+  def index
+    @vapes = Vape.all
+    
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :vapes => @vapes } }
+    end
+  end
+
+  # GET /vapes/1 or /vapes/1.json
   def show
     @vape = Vape.find(params[:id])
 

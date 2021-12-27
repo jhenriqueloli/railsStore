@@ -11,8 +11,14 @@ class AccessoriesController < ApplicationController
     end
   end
 
-  # GET /accessories/1 or /accessories/1.json
-  def show
+   # GET /accessories/1 or /accessories/1.json
+   def show
+    @accessory = Accessory.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.json { render :json => { :accessory => @accessory } }
+    end
   end
 
   # GET /accessories/new
