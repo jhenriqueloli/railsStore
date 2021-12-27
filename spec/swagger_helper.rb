@@ -30,6 +30,22 @@ RSpec.configure do |config|
               default: '127.0.0.1:3000/'
             }
           }
+        },
+        {
+          url:  'https://{herokuDev}',
+          variables: {
+            herokuDev: {
+              default: 'rails-store-joaobitencourt.herokuapp.com'
+            }
+          }
+        },
+        {
+          url: 'https://{herokuProd}',
+          variables: {
+            herokuProd: {
+              default: 'joaobitencourt.herokuapp.com/'
+            }
+          }
         }
       ]
     }
