@@ -130,5 +130,37 @@ RSpec.describe 'api/v1', type: :request do
       end
     end
   end
+  
+  path '/consumer/essences/{id}' do
+
+    delete 'Delete a essence' do
+      tags 'Essence'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, in: :path, type: :string
+
+      response '200', 'essence deleted' do
+        schema type: :object,
+        properties: {
+          id: { type: :integer },
+          name: { type: :string },
+          brand: { type: :string },
+          flavor: { type: :string },
+          size: { type: :float },
+          strength: { type: :string },
+          price: { type: :float },
+          quantity: { type: :integer }
+        },
+        required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+      
+      let(:id) { Essence.create(name: 'Essence Swagger', brand: 'Essence Swagger Brand', flavor: 'apple', 'size': '30', strength: 'hard', price: '29.90', quantity: '20').id }
+      run_test!
+      end
+
+      response '404', 'Essence not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 
 end

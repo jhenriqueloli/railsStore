@@ -1,8 +1,8 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/v1/users', type: :request do
+RSpec.describe 'api/v1', type: :request do
 
-  path '/sign_up' do
+  path '/users' do
     post 'Register into application' do
       tags 'Users'
       consumes "application/json"
@@ -57,7 +57,7 @@ RSpec.describe 'api/v1/users', type: :request do
     end
   end
 
-  path '/sign_in' do
+  path '/users/sign_in' do
     post 'Log in into application' do
       tags 'Users'
       consumes "application/json"

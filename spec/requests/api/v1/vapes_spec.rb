@@ -121,4 +121,33 @@ RSpec.describe 'api/v1', type: :request do
     end
   end
 
+  path '/consumer/vapes/{id}' do
+
+    delete 'Delete a vape' do
+      tags 'Vape'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, in: :path, type: :string
+
+      response '200', 'vape deleted' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer },
+            name: { type: :string },
+            warrrancy: { type: :string },
+            price: { type: :float },
+            quantity: { type: :integer }
+          },
+          required: [ 'id', 'name', 'warrrancy', 'price', 'quantity' ]
+
+        let(:id) { Vape.create(name: 'Vape Swagger', warrrancy: '36', price: '29.90', quantity: '20').id }
+        run_test!
+      end
+
+      response '404', 'Vape not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end

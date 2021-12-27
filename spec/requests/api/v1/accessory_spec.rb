@@ -119,4 +119,33 @@ RSpec.describe 'api/v1', type: :request do
     end
   end
 
+  path '/consumer/accessories/{id}' do
+
+    delete 'Delete a accessory' do
+      tags 'Accessory'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, in: :path, type: :string
+
+      response '200', 'accessory deleted' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer },
+            name: { type: :string },
+            brand: { type: :string },
+            price: { type: :float },
+            quantity: { type: :integer }
+          },
+          required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+
+        let(:id) { Accessory.create(name: 'Accessory Swagger', brand: 'Accessory Swagger Brand', price: '29.90', quantity: '20').id }
+        run_test!
+      end
+
+      response '404', 'Accessory not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
 end

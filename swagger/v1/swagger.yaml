@@ -176,6 +176,62 @@ paths:
               - brand
               - price
               - quantity
+    delete:
+      summary: Delete a accessory
+      tags:
+      - Accessory
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: accessory deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '404':
+          description: Accessory not found
   "/consumer/essences":
     get:
       summary: Get a list of essences
@@ -384,6 +440,74 @@ paths:
               - brand
               - price
               - quantity
+    delete:
+      summary: Delete a essence
+      tags:
+      - Essence
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: essence deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  brand:
+                    type: string
+                  flavor:
+                    type: string
+                  size:
+                    type: float
+                  strength:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - brand
+                - price
+                - quantity
+        '404':
+          description: Essence not found
   "/":
     get:
       summary: Get a list of products
@@ -474,7 +598,7 @@ paths:
                 - email
         '422':
           description: invalid request
-  "/sign_up":
+  "/users":
     post:
       summary: Register into application
       tags:
@@ -525,7 +649,7 @@ paths:
               required:
               - username
               - email
-  "/sign_in":
+  "/users/sign_in":
     post:
       summary: Log in into application
       tags:
@@ -724,6 +848,62 @@ paths:
               - warrancy
               - price
               - quantity
+    delete:
+      summary: Delete a vape
+      tags:
+      - Vape
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: vape deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  warrrancy:
+                    type: string
+                  price:
+                    type: float
+                  quantity:
+                    type: integer
+                required:
+                - id
+                - name
+                - warrrancy
+                - price
+                - quantity
+        '404':
+          description: Vape not found
 servers:
 - url: http://{defaultHost}
   variables:
