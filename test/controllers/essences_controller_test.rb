@@ -28,11 +28,4 @@ class EssencesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to products_path
   end
 
-  test "should destroy essence" do
-    assert_difference 'Essence.count', -1 do
-      delete essence_url(@essence)
-    end
-
-    assert_redirected_to essences_url
-  end
 end
