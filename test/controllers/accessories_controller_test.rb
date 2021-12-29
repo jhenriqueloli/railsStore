@@ -29,7 +29,7 @@ class AccessoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy accessory" do
-    assert_difference('Accessory.count', -1) do
+    assert_difference 'Accessory.count', -1 do
       delete accessory_url(@accessory)
     end
 
