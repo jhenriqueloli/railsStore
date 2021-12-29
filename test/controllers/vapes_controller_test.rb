@@ -34,14 +34,4 @@ class VapesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to products_path
   end
 
-  test "should destroy vape" do
-<<<<<<< HEAD
-    assert_difference 'Vape.count' do 
-=======
-    assert_difference 'Vape.count', -1 do
->>>>>>> feature/updating_tests
-      delete vape_url(@vape)
-    end
-    assert_redirected_to products_path
-  end
 end
