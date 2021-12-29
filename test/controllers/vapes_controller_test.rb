@@ -18,7 +18,7 @@ class VapesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create vape" do
     assert_difference 'Vape.count' do 
-      post vapes_url, params: { vape: { name: "Vape Test New", brand: "Brand Test New", warrancy: "3", price: "13", quantity: "23" } }
+      post vapes_url, params: {  name: "Vape Test New", brand: "Brand Test New", warrancy: "3", price: "13", quantity: "23" }
     end
 
     assert_redirected_to products_path
@@ -30,7 +30,7 @@ class VapesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update vape" do
-    patch vape_url(@vape), params: { vape: { name: "Vape Test Update", brand: "Brand Test Update", warrancy: "3", price: "30", quantity: "30" } }
+    patch vape_url(@vape), params: { name: "Vape Test Update", brand: "Brand Test Update", warrancy: "3", price: "30", quantity: "30"  }
     assert_redirected_to products_path
   end
 

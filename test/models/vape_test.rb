@@ -46,11 +46,6 @@ class VapeTest < ActiveSupport::TestCase
       assert_not @vape.valid?
     end
 
-    test "quantity should be present" do
-      @vape.quantity = " "
-      assert_not @vape.valid?
-    end
-
     test "quantity should higher than or equal 1" do
       @vape.quantity = 0
       assert_not @vape.valid?
