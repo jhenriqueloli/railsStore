@@ -71,8 +71,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 name:
                   type: string
                 brand:
@@ -82,7 +80,6 @@ paths:
                 quantity:
                   type: integer
               required:
-              - id
               - name
               - brand
               - price
@@ -196,40 +193,16 @@ paths:
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  brand:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - brand
-                - price
-                - quantity
             application/xml:
               schema:
                 type: object
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  brand:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - brand
-                - price
-                - quantity
         '404':
           description: Accessory not found
   "/consumer/essences":
@@ -311,8 +284,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 name:
                   type: string
                 brand:
@@ -328,7 +299,6 @@ paths:
                 quantity:
                   type: integer
               required:
-              - id
               - name
               - brand
               - price
@@ -460,52 +430,16 @@ paths:
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  brand:
-                    type: string
-                  flavor:
-                    type: string
-                  size:
-                    type: float
-                  strength:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - brand
-                - price
-                - quantity
             application/xml:
               schema:
                 type: object
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  brand:
-                    type: string
-                  flavor:
-                    type: string
-                  size:
-                    type: float
-                  strength:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - brand
-                - price
-                - quantity
         '404':
           description: Essence not found
   "/":
@@ -598,81 +532,6 @@ paths:
                 - email
         '422':
           description: invalid request
-  "/users":
-    post:
-      summary: Register into application
-      tags:
-      - Users
-      parameters: []
-      responses:
-        '201':
-          description: user created
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-              - username
-              - email
-              - password
-  "/edit":
-    patch:
-      summary: Update User informations
-      tags:
-      - Users
-      parameters: []
-      responses:
-        '201':
-          description: user updated
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                email:
-                  type: string
-              required:
-              - username
-              - email
-  "/users/sign_in":
-    post:
-      summary: Log in into application
-      tags:
-      - Users
-      parameters: []
-      responses:
-        '201':
-          description: user logged in
-        '422':
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-              - email
-              - password
   "/consumer/vapes":
     get:
       summary: Get a list of vapes
@@ -868,40 +727,16 @@ paths:
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  warrrancy:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - warrrancy
-                - price
-                - quantity
             application/xml:
               schema:
                 type: object
                 properties:
                   id:
                     type: integer
-                  name:
-                    type: string
-                  warrrancy:
-                    type: string
-                  price:
-                    type: float
-                  quantity:
-                    type: integer
                 required:
                 - id
-                - name
-                - warrrancy
-                - price
-                - quantity
         '404':
           description: Vape not found
 servers:
