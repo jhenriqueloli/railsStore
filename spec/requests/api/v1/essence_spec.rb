@@ -74,7 +74,6 @@ RSpec.describe 'api/v1', type: :request do
       parameter name: :essence, in: :body, schema: {
         type: :object,
         properties: {
-          id: { type: :integer },
           name: { type: :string },
           brand: { type: :string },
           flavor: { type: :string },
@@ -83,7 +82,7 @@ RSpec.describe 'api/v1', type: :request do
           price: { type: :float },
           quantity: { type: :integer }
         },
-        required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+        required: [ 'name', 'brand', 'price', 'quantity' ]
       }
 
       response "201", "essence created successfully" do
@@ -141,16 +140,9 @@ RSpec.describe 'api/v1', type: :request do
       response '200', 'essence deleted' do
         schema type: :object,
         properties: {
-          id: { type: :integer },
-          name: { type: :string },
-          brand: { type: :string },
-          flavor: { type: :string },
-          size: { type: :float },
-          strength: { type: :string },
-          price: { type: :float },
-          quantity: { type: :integer }
+          id: { type: :integer }
         },
-        required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+        required: [ 'id' ]
       
       let(:id) { Essence.create(name: 'Essence Swagger', brand: 'Essence Swagger Brand', flavor: 'apple', 'size': '30', strength: 'hard', price: '29.90', quantity: '20').id }
       run_test!

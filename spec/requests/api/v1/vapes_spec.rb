@@ -131,13 +131,10 @@ RSpec.describe 'api/v1', type: :request do
       response '200', 'vape deleted' do
         schema type: :object,
           properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            warrrancy: { type: :string },
-            price: { type: :float },
-            quantity: { type: :integer }
+            id: { type: :integer }
+            
           },
-          required: [ 'id', 'name', 'warrrancy', 'price', 'quantity' ]
+          required: [ 'id' ]
 
         let(:id) { Vape.create(name: 'Vape Swagger', warrrancy: '36', price: '29.90', quantity: '20').id }
         run_test!

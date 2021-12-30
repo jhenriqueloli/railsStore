@@ -68,13 +68,12 @@ RSpec.describe 'api/v1', type: :request do
       parameter name: :accessory, in: :body, schema: {
         type: :object,
         properties: {
-          id: { type: :integer },
           name: { type: :string },
           brand: { type: :string },
           price: { type: :float },
           quantity: { type: :integer }
         },
-        required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+        required: [  'name', 'brand', 'price', 'quantity' ]
       }
       
       response "201", "accessory updated successfully" do
@@ -129,13 +128,9 @@ RSpec.describe 'api/v1', type: :request do
       response '200', 'accessory deleted' do
         schema type: :object,
           properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            brand: { type: :string },
-            price: { type: :float },
-            quantity: { type: :integer }
+            id: { type: :integer }            
           },
-          required: [ 'id', 'name', 'brand', 'price', 'quantity' ]
+          required: [ 'id' ]
 
         let(:id) { Accessory.create(name: 'Accessory Swagger', brand: 'Accessory Swagger Brand', price: '29.90', quantity: '20').id }
         run_test!
